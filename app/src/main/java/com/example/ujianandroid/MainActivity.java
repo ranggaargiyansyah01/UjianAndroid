@@ -32,8 +32,25 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String isian_nama_depan = edNamaDepan.getText().toString();
                 String isian_nama_belakang = edNamaBelakang.getText().toString();
-                String isian_umur = edumur.getText().toString();
-                Integer doubleumur = Integer.valueOf(isian_umur);
+                int isian_umur = Integer.valueOf(edumur.getText().toString());
+                String status = "";
+
+                if(0 <= isian_umur && isian_umur <= 10)
+                {
+                    status = "ANAK";
+                }
+                else if(isian_umur >= 11 && isian_umur <= 20)
+                {
+                    status = "REMAJA";
+                }
+                else if(isian_umur >= 21 && isian_umur <= 30)
+                {
+                    status = "DEWASA";
+                }
+                else if(isian_umur > 30)
+                {
+                    status = "TUA";
+                }
 
                 if(isian_nama_depan.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Isian masih kosong", Toast.LENGTH_SHORT).show();
@@ -41,8 +58,12 @@ public class MainActivity extends AppCompatActivity {
                     String nama_lengkap = isian_nama_depan.concat(" ").concat(isian_nama_belakang);
                     daftar_nama.clear();
 
-                    for (int i = 0; i <doubleumur; i++){
-                        daftar_nama.add(nama_lengkap);
+                    for (int i = 0; i <isian_umur; i += 2)
+                    {
+                        if (i % 2 == 0)
+                        {
+                            daftar_nama.add(i + ". " + nama_lengkap + ", status: " + status);
+                        }
                     }
                     daftar_nama.add(nama_lengkap);
                     edNamaDepan.setText("");
