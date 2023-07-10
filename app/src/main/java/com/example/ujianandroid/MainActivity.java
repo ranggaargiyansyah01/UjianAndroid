@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     String nama_lengkap = isian_nama_depan.concat(" ").concat(isian_nama_belakang);
                     daftar_nama.clear();
 
-                    for (int i = 0; i <isian_umur; i += 2)
+                    for (int i = 0; i <isian_umur; i++)
                     {
                         if (i % 2 == 0)
                         {
